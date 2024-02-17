@@ -9,5 +9,8 @@ export default defineConfig({
     host: '0.0.0.0',
     // You can change the port for starting up.
     port: 5173
-  }
+  },
+  base: process.env.GITHUB_PAGES
+    ? "front"
+    : "./",
 })

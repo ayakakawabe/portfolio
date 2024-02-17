@@ -1,10 +1,10 @@
 import React from "react";
 
-const Qiita:React.FC=()=>{
+const Skill:React.FC=()=>{
     return(
         <div>
-            <h1>Qiita</h1>
+            <h1>Skill</h1>
         </div>
     )
 };
-export default Qiita;
+export default Skill;

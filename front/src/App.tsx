@@ -3,7 +3,7 @@ import Certification from "./components/Certification";
 import GithubRepo from "./components/GithubRepo";
 import Profile from "./components/Profile";
 import Qiita from "./components/Qiita";
-import Skill from "./components/Skill";
+import Skill from "./components/SkillSet";
 
 function App() {
   return (
@@ -18,4 +18,4 @@ function App() {
   )
 }
 
-export default App
+export default App;

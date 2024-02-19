@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 interface RepoType{
     name:string,
     description:string,
-    language:Array<String>,
+    language:Array<string>,
     url:string
 }
 

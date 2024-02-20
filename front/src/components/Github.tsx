@@ -12,14 +12,16 @@ interface AccountInfoType{
 
 interface RepoType{
     fullName:string,
-    description:string,
-    languages:Array<string>,
+    description:string|null,
+    // languages:Pick<RepoLanguagesType,"data">,
+    languages:{[key: string]: number},
     url:string,
-    updatedDate:string
+    updatedDate:string|null|undefined
 }
 
 type AccountInfoResponseType=Endpoints["GET /users/{username}"]["response"];
 type ReposResponseType=Endpoints["GET /users/{username}/repos"]["response"];
+type RepoLanguagesType=Endpoints["GET /repos/{owner}/{repo}/languages"]["response"];
 
 const acconutName:string="ayakakawabe";
 const repoList:Array<string>=["TaRO","chatgpt-line-bot-for-experiment","portfolio"];
@@ -29,7 +31,6 @@ const octokit=new Octokit({
     auth: GitHub_AUTH
 });
 
-
 const getAccountInfo= async(acconutName:string):Promise<AccountInfoResponseType>=>{
   const response= await octokit.request("GET /users/{username}",{
     username:acconutName,
@@ -38,7 +39,7 @@ const getAccountInfo= async(acconutName:string):Promise<AccountInfoResponseType>
         accept:"application/vnd.github+json",
         "user-agent": "ayakakawabe_portfolio"
     }
-  })
+  });
     if(response.status!=200){
         throw new Error(`HTTP error (get account infomation). Status:${response.status}`);
     }
@@ -51,14 +52,31 @@ const getAllRepos= async(acconutName:string):Promise<ReposResponseType>=>{
         type:"all",
         headers:{
             accept:"application/vnd.github+json",
-            'X-GitHub-Api-Version': '2022-11-28'
+            'X-GitHub-Api-Version': '2022-11-28',
+            "user-agent": "ayakakawabe_portfolio"
         }
-    })
+    });
     if(response.status!=200){
         throw new Error(`HTTP error (get repos). Status:${response.status}`);
     }
     return response;
 };
+
+const getRepoLanguages=async(owner:string,repo:string):Promise<RepoLanguagesType>=>{
+    const response=await octokit.request("GET /repos/{owner}/{repo}/languages",{
+        owner:owner,
+        repo:repo,
+        headers:{
+            accept:"application/vnd.github+json",
+            'X-GitHub-Api-Version': '2022-11-28',
+            "user-agent": "ayakakawabe_portfolio"
+        }
+    });
+    if(response.status!=200){
+        throw new Error(`HTTP error (get repo languages). Status:${response.status}`);
+    }
+    return response;
+}
 
 const GithubRepo:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<AccountInfoType>();    
@@ -74,16 +92,15 @@ const GithubRepo:React.FC=()=>{
             const allRepos=await getAllRepos(acconutName);
             allRepos.data.forEach((repo)=>{
                 if(repoList.includes(repo.name)){
-                    const langurages_url:string=repo.languages_url;
-                    console.log(langurages_url);                    
-                }
-            })
-            // allRepos.forEach((repo)=>{
-            //     if(repoList.includes(repo.name)){
-            //         console.log(repo)
-            //         setRepos(repos=>[...repos,{name:repo.name,language:[repo.language],description:repo.description,url:repo.html_url}]);
-            //     }
-            // });
+                    const owner=repo.owner.login;
+                    const repoName=repo.name;
+                    (async()=>{
+                        const languages=await getRepoLanguages(owner,repoName);
+                        setRepos(repos=>[...repos,{fullName:repo.full_name,description:repo.description,url:repo.html_url,updatedDate:repo.pushed_at,languages:languages.data}]);
+                        console.log(languages.data)
+                    })();                
+                };
+            });
         })();
     },[]);
 
@@ -102,9 +119,9 @@ const GithubRepo:React.FC=()=>{
                 repos.map((repo,index)=>{
                     return (
                         <div key={index}>
-                            <p>{repo.name}</p>
+                            <p>{repo.fullName}</p>
                             <p>{repo.description}</p>
-                            <p>{repo.language}</p>
+                            {/* <p>{repo.languages}</p> */}
                         </div>
                         )
                 })}

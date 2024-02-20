@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { Octokit } from "@octokit/core";
+import { Endpoints } from "@octokit/types";
 
 interface AccountInfoType{
     name:string,
@@ -15,16 +17,30 @@ interface RepoType{
     url:string
 }
 
+type FetchAccountInfoResponse=Endpoints["GET /users/{username}"]["response"]
+
 const acconutName:string="ayakakawabe";
 const repoList:Array<string>=["chatgpt-line-bot-for-experiment","portfolio"];
 
-const fetchAccountInfo= async(acconutName:string):Promise<object>=>{
-    const response= await fetch(`https://api.github.com/users/${acconutName}`);
-    if(!response.ok){
-        throw new Error(`HTTP error (fetch account info ). Status:${response.status}`)
+const GitHub_AUTH:string=import.meta.env.VITE_GITHUB_AUTH;
+const octokit=new Octokit({
+    auth: GitHub_AUTH
+});
+
+
+const fetchAccountInfo= async(acconutName:string):Promise<FetchAccountInfoResponse>=>{
+  const response= await octokit.request("GET /users/{username}",{
+    username:acconutName,
+    headers:{
+        'X-GitHub-Api-Version': '2022-11-28',
+        accept:"application/vnd.github+json",
+        "user-agent": "ayakakawabe_portfolio"
     }
-    const data=response.json();
-    return data;
+  })
+    if(response.status!=200){
+        throw new Error(`HTTP error (fetch repos ). Status:${response.status}`);
+    }
+  return response;  
 };
 
 const fetchAllRepos= async(acconutName:string):Promise<Array<object>>=>{
@@ -43,7 +59,7 @@ const GithubRepo:React.FC=()=>{
     useEffect(()=>{
         (async()=>{
             const allAccountInfo= await fetchAccountInfo(acconutName);
-            setAccountInfo({name:acconutName,avatarUrl:allAccountInfo.avatar_url,repos:allAccountInfo.public_repos,following:allAccountInfo.following,followers:allAccountInfo.followers});
+            setAccountInfo({name:acconutName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
         })();
 
         (async()=>{

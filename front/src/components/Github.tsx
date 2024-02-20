@@ -7,7 +7,7 @@ interface RepoType{
     url:string
 }
 
-const fetchAllRepos= async():Promise<[]>=>{
+const fetchAllRepos= async():Promise<Array<object>>=>{
     const response= await fetch("https://api.github.com/users/ayakakawabe/repos");
     if(!response.ok){
         throw new Error(`HTTP error. Status:${response.status}`);
@@ -25,11 +25,11 @@ const GithubRepo:React.FC=()=>{
         (async()=>{
             const allRepos=await fetchAllRepos();
             allRepos.forEach((repo)=>{
-                    if(repoList.includes(repo.name)){
-                        console.log(repo)
-                        setRepos(repos=>[...repos,{name:repo.name,language:[repo.language],description:repo.description,url:repo.html_url}]);
-                    }
-                });
+                if(repoList.includes(repo.name)){
+                    console.log(repo)
+                    setRepos(repos=>[...repos,{name:repo.name,language:[repo.language],description:repo.description,url:repo.html_url}]);
+                }
+            });
         })();
     },[]);
     return(

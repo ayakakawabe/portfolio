@@ -11,16 +11,18 @@ interface AccountInfoType{
 }
 
 interface RepoType{
-    name:string,
+    fullName:string,
     description:string,
-    language:Array<string>,
-    url:string
+    languages:Array<string>,
+    url:string,
+    updatedDate:string
 }
 
-type FetchAccountInfoResponse=Endpoints["GET /users/{username}"]["response"]
+type AccountInfoResponseType=Endpoints["GET /users/{username}"]["response"];
+type ReposResponseType=Endpoints["GET /users/{username}/repos"]["response"];
 
 const acconutName:string="ayakakawabe";
-const repoList:Array<string>=["chatgpt-line-bot-for-experiment","portfolio"];
+const repoList:Array<string>=["TaRO","chatgpt-line-bot-for-experiment","portfolio"];
 
 const GitHub_AUTH:string=import.meta.env.VITE_GITHUB_AUTH;
 const octokit=new Octokit({
@@ -28,7 +30,7 @@ const octokit=new Octokit({
 });
 
 
-const fetchAccountInfo= async(acconutName:string):Promise<FetchAccountInfoResponse>=>{
+const getAccountInfo= async(acconutName:string):Promise<AccountInfoResponseType>=>{
   const response= await octokit.request("GET /users/{username}",{
     username:acconutName,
     headers:{
@@ -38,18 +40,24 @@ const fetchAccountInfo= async(acconutName:string):Promise<FetchAccountInfoRespon
     }
   })
     if(response.status!=200){
-        throw new Error(`HTTP error (fetch repos ). Status:${response.status}`);
+        throw new Error(`HTTP error (get account infomation). Status:${response.status}`);
     }
   return response;  
 };
 
-const fetchAllRepos= async(acconutName:string):Promise<Array<object>>=>{
-    const response= await fetch(`https://api.github.com/users/${acconutName}/repos`);
-    if(!response.ok){
-        throw new Error(`HTTP error (fetch repos ). Status:${response.status}`);
+const getAllRepos= async(acconutName:string):Promise<ReposResponseType>=>{
+    const response= await octokit.request("GET /users/{username}/repos",{
+        username:acconutName,
+        type:"all",
+        headers:{
+            accept:"application/vnd.github+json",
+            'X-GitHub-Api-Version': '2022-11-28'
+        }
+    })
+    if(response.status!=200){
+        throw new Error(`HTTP error (get repos). Status:${response.status}`);
     }
-    const data=response.json()
-    return data;
+    return response;
 };
 
 const GithubRepo:React.FC=()=>{
@@ -58,18 +66,24 @@ const GithubRepo:React.FC=()=>{
 
     useEffect(()=>{
         (async()=>{
-            const allAccountInfo= await fetchAccountInfo(acconutName);
+            const allAccountInfo= await getAccountInfo(acconutName);
             setAccountInfo({name:acconutName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
         })();
 
         (async()=>{
-            const allRepos=await fetchAllRepos(acconutName);
-            allRepos.forEach((repo)=>{
+            const allRepos=await getAllRepos(acconutName);
+            allRepos.data.forEach((repo)=>{
                 if(repoList.includes(repo.name)){
-                    console.log(repo)
-                    setRepos(repos=>[...repos,{name:repo.name,language:[repo.language],description:repo.description,url:repo.html_url}]);
+                    const langurages_url:string=repo.languages_url;
+                    console.log(langurages_url);                    
                 }
-            });
+            })
+            // allRepos.forEach((repo)=>{
+            //     if(repoList.includes(repo.name)){
+            //         console.log(repo)
+            //         setRepos(repos=>[...repos,{name:repo.name,language:[repo.language],description:repo.description,url:repo.html_url}]);
+            //     }
+            // });
         })();
     },[]);
 

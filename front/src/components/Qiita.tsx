@@ -67,7 +67,7 @@ const QiitaArt:React.FC=()=>{
             const sortedAllArticles=allArticles.sort((a,b)=>{
                 return (a.likes_count,b.likes_count)?1:-1;
             });
-            sortedAllArticles.slice(0.3).map((article):void=>{
+            sortedAllArticles.slice(0,4).map((article):void=>{
                 setArticles(articles=>[...articles,{likes:article.likes_count,stocks:article.stocks_count,tags:article.tags,title:article.title,updatedDate:article.updated_at.substring(0,article.updated_at.indexOf("T")),url:article.url,pv:article.page_views_count}]);
             });
         })();

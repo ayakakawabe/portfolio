@@ -107,10 +107,10 @@ const GithubRepo:React.FC=()=>{
             <h1>Github</h1>
             <div>
                 <img src={accountInfo?.avatarUrl}></img>
-                <p>{accountInfo?.name}</p>
-                <p>{accountInfo?.repos}</p>
-                <p>{accountInfo?.following}</p>
-                <p>{accountInfo?.followers}</p>                
+                <p>name:{accountInfo?.name}</p>
+                <p>repos:{accountInfo?.repos}</p>
+                <p>followers:{accountInfo?.followers}</p> 
+                <p>following:{accountInfo?.following}</p>               
             </div>
             <div>
                 {repos && 

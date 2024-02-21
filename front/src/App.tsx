@@ -2,7 +2,7 @@ import Activity from "./components/Activity";
 import Certification from "./components/Certification";
 import GithubRepo from "./components/Github";
 import Profile from "./components/Profile";
-import Qiita from "./components/Qiita";
+import QiitaArt from "./components/Qiita";
 import Skill from "./components/SkillSet";
 
 function App() {
@@ -13,7 +13,7 @@ function App() {
       <Certification />
       <Activity />
       <GithubRepo />
-      <Qiita />
+      <QiitaArt />
     </>
   )
 }

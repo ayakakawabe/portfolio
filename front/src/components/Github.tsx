@@ -93,9 +93,10 @@ const GithubRepo:React.FC=()=>{
                 if(repoList.includes(repo.name)){
                     const owner=repo.owner.login;
                     const repoName=repo.name;
+                    console.log(repo.pushed_at);
                     (async()=>{
                         const languages=await getRepoLanguages(owner,repoName);
-                        setRepos(repos=>[...repos,{fullName:repo.full_name,description:repo.description,url:repo.html_url,updatedDate:repo.pushed_at,languages:languages.data}]);
+                        setRepos(repos=>[...repos,{fullName:repo.full_name,description:repo.description,url:repo.html_url,updatedDate:repo.pushed_at?.substring(0,repo.pushed_at.indexOf("T")),languages:languages.data}]);
                     })();                
                 };
             });
@@ -118,6 +119,7 @@ const GithubRepo:React.FC=()=>{
                     return (
                         <div key={index}>
                             <p>{repo.fullName}</p>
+                            <p>{repo.updatedDate}</p>
                             <p>{repo.description}</p>
                             <ul>
                             {Object.keys(repo.languages).map((language,index)=>{return(

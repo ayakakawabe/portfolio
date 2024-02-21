@@ -36,10 +36,9 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
+          cache-dependency-path: ./front/package-lock.json
       - name: Install dependencies
-        run: |
-          cd front/
-          npm install
+        run: npm install
       - name: Build
         run: npm run build
       - name: Setup Pages

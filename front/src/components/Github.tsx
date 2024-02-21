@@ -13,7 +13,6 @@ interface AccountInfoType{
 interface RepoType{
     fullName:string,
     description:string|null,
-    // languages:Pick<RepoLanguagesType,"data">,
     languages:{[key: string]: number},
     url:string,
     updatedDate:string|null|undefined
@@ -120,11 +119,11 @@ const GithubRepo:React.FC=()=>{
                         <div key={index}>
                             <p>{repo.fullName}</p>
                             <p>{repo.description}</p>
+                            <ul>
                             {Object.keys(repo.languages).map((language,index)=>{return(
-                                <ul>
                                     <li key={index}>{language}</li>
-                                </ul>
                             )})}
+                            </ul>
                         </div>
                         )
                 })}

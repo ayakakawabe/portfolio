@@ -37,13 +37,13 @@ jobs:
           node-version: 18
           cache: 'npm'
       - name: Install dependencies
-        run: cd front/
-        run: npm install
+        run: cd front/ && npm install
       - name: Build
         run: npm run rebuild
       - name: Setup Pages
         uses: actions/configure-pages@v4
-        env: VITE_GITHUB_AUTH: ${{secrets.AUTH_TOKEN_GITHUB}}
+        env:
+          VITE_GITHUB_AUTH: ${{ secrets.AUTH_TOKEN_GITHUB }}
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

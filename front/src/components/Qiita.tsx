@@ -10,6 +10,16 @@ interface QiitaAccountInfoType{
     url:string
 }
 
+interface QiitaArticlesType{
+    likes:number,
+    stocks:number,
+    tags:any[],
+    title:string,
+    updatedDate:string,
+    url:string,
+    pv:number|null
+}
+
 const QIITA_AUTH:string=import.meta.env.VITE_QIITA_AUTH;
 
 const getAccountInfo=async():Promise<QiitaType.Entities.AuthenticatedUser>=>{
@@ -44,6 +54,8 @@ const getAllArticles=async():Promise<Array<QiitaType.Entities.Item>>=>{
 
 const QiitaArt:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<QiitaAccountInfoType>();
+    const [articles,setArticles]=useState<QiitaArticlesType>();
+
     useEffect(()=>{
         (async()=>{
             const allAccountInfo= await getAccountInfo();
@@ -53,6 +65,10 @@ const QiitaArt:React.FC=()=>{
         (async()=>{
             const allArticles=await getAllArticles();
             console.log(allArticles);
+            const sortedAllArticles=allArticles.sort((a,b)=>{
+                return (a.likes_count,b.likes_count)?1:-1;
+            });
+            console.log(sortedAllArticles);
         })();
     },[]);
     return(

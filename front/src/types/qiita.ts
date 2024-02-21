@@ -90,6 +90,13 @@ export declare module Qiita {
                 twitter_screen_name?: string;
                 website_url?: string;
             };
+            comments_count:number;
+            likes_count:number;
+            reactions_count:number;
+            stocks_count:number;
+            page_views_count:number,
+            organization_url_name:null|string;
+            slide:boolean;
         }
         interface Like {
             created_at: string;

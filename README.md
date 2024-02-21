@@ -21,12 +21,6 @@
     ```
     npm run build
     ```
-* Build from the second time onwards
-
-    Run the following command after entering the container.
-    ```
-    npm run rebuild
-    ```
 * Stop the container
     ```
     docker compose down

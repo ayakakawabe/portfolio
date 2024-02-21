@@ -54,7 +54,7 @@ const getAllArticles=async():Promise<Array<QiitaType.Entities.Item>>=>{
 
 const QiitaArt:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<QiitaAccountInfoType>();
-    const [articles,setArticles]=useState<QiitaArticlesType>();
+    const [articles,setArticles]=useState<Array<QiitaArticlesType>>([]);
 
     useEffect(()=>{
         (async()=>{
@@ -64,11 +64,12 @@ const QiitaArt:React.FC=()=>{
 
         (async()=>{
             const allArticles=await getAllArticles();
-            console.log(allArticles);
             const sortedAllArticles=allArticles.sort((a,b)=>{
                 return (a.likes_count,b.likes_count)?1:-1;
             });
-            console.log(sortedAllArticles);
+            sortedAllArticles.slice(0.3).map((article):void=>{
+                setArticles(articles=>[...articles,{likes:article.likes_count,stocks:article.stocks_count,tags:article.tags,title:article.title,updatedDate:article.updated_at.substring(0,article.updated_at.indexOf("T")),url:article.url,pv:article.page_views_count}]);
+            });
         })();
     },[]);
     return(
@@ -80,6 +81,26 @@ const QiitaArt:React.FC=()=>{
                 <p>articles:{accountInfo?.articles}</p>
                 <p>followers:{accountInfo?.followers}</p>
                 <p>following:{accountInfo?.following}</p>
+            </div>
+            <div>
+                {articles.map((article,index)=>{
+                    return (
+                        <div key={index}>
+                            <p>title:{article.title}</p>
+                            <p>updated:{article.updatedDate}</p>
+                            <ul>
+                                {article.tags.map((tag,index)=>{
+                                    return (
+                                        <li key={index}>{tag.name}</li>
+                                    )
+                                })}
+                            </ul>
+                            <p>likes:{article.likes}</p>
+                            <p>stocks:{article.stocks}</p>
+                            <p>pv:{article.pv}</p>
+                        </div>
+                    )
+                })}
             </div>
         </div>
     )

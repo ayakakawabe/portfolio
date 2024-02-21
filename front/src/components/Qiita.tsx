@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { Qiita as QiitaType } from "./../types/qiita";
 
 interface QiitaAccountInfoType{
@@ -6,7 +6,8 @@ interface QiitaAccountInfoType{
     avatarUrl:string,
     articles:number,
     following:number,
-    followers:number
+    followers:number,
+    url:string
 }
 
 const QIITA_AUTH:string=import.meta.env.VITE_QIITA_AUTH;
@@ -28,10 +29,12 @@ const getAccountInfo=async():Promise<QiitaType.Entities.User>=>{
 
 const QiitaArt:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<QiitaAccountInfoType>();
-    (async()=>{
-        const allAccountInfo= await getAccountInfo();
-        setAccountInfo({name:allAccountInfo.id,avatarUrl:allAccountInfo.profile_image_url,articles:allAccountInfo.items_count,followers:allAccountInfo.followers_count,following:allAccountInfo.followees_count});
-    })();
+    useEffect(()=>{
+        (async()=>{
+            const allAccountInfo= await getAccountInfo();
+            setAccountInfo({name:allAccountInfo.id,avatarUrl:allAccountInfo.profile_image_url,articles:allAccountInfo.items_count,followers:allAccountInfo.followers_count,following:allAccountInfo.followees_count,url:"https://qiita.com/"+allAccountInfo.id});
+        })();
+    },[]);
     return(
         <div>
             <h1>Qiita</h1>

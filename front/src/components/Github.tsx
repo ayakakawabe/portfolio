@@ -114,7 +114,7 @@ const GithubRepo:React.FC=()=>{
                 <p>following:{accountInfo?.following}</p>               
             </div>
             <div>
-            <GitHubCalendar username="ayakakawabe"/>
+            <GitHubCalendar username={acconutName}/>
             </div>
             <div>
                 {repos && 

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Octokit } from "@octokit/core";
 import { Endpoints } from "@octokit/types";
+import GitHubCalendar from "react-github-calendar";
 
 interface AccountInfoType{
     name:string,
@@ -111,6 +112,9 @@ const GithubRepo:React.FC=()=>{
                 <p>repos:{accountInfo?.repos}</p>
                 <p>followers:{accountInfo?.followers}</p> 
                 <p>following:{accountInfo?.following}</p>               
+            </div>
+            <div>
+            <GitHubCalendar username={acconutName}/>
             </div>
             <div>
                 {repos && 

@@ -98,7 +98,7 @@ const GithubRepo:React.FC=()=>{
                         const languages=await getRepoLanguages(owner,repoName);
                         setRepos(repos=>[...repos,{fullName:repo.full_name,description:repo.description,url:repo.html_url,updatedDate:repo.pushed_at?.substring(0,repo.pushed_at.indexOf("T")),languages:languages.data}]);
                     })();                
-                };
+                }
             });
         })();
     },[]);

@@ -2,7 +2,7 @@ import React from "react";
 
 const Activity:React.FC=()=>{
     return(
-        <div>
+        <section id="activity">
             <h1>Activities</h1>
             <h2>Hackathon</h2>
             <h3>2023</h3>
@@ -12,7 +12,7 @@ const Activity:React.FC=()=>{
                 <li>技育CAMPアドバンス</li>
             </ul>          
             <h3>2024</h3>
-        </div>
+        </section>
     )
 };
 export default Activity;

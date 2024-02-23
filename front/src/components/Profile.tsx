@@ -2,7 +2,7 @@ import React from "react";
 
 const Profile:React.FC=()=>{
     return(
-        <section className="text-gray-600 body-font">
+        <section id="profile" className="text-gray-600 body-font">
             <div className="container px-5 py-14 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">
                     <div className="flex flex-col sm:flex-row mt-10">

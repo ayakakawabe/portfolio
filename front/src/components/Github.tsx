@@ -104,7 +104,7 @@ const GithubRepo:React.FC=()=>{
     },[]);
 
     return(
-        <div>
+        <section id="github">
             <h1>Github</h1>
             <div>
                 <img src={accountInfo?.avatarUrl}></img>
@@ -133,7 +133,7 @@ const GithubRepo:React.FC=()=>{
                         )
                 })}
             </div>
-        </div>
+        </section>
     )
 }
 export default GithubRepo;

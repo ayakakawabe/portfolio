@@ -8,7 +8,7 @@ const Profile:React.FC=()=>{
                     <div className="flex flex-col sm:flex-row my-2">
                         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                             <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
-                                <img src="/home_icon.svg" className=" w-20 h-20 rounded-full" />
+                                <img src="./home_icon.svg" className=" w-20 h-20 rounded-full" />
                             </div>
                             <div className="flex flex-col items-center text-center justify-center">
                                 <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">Ayaka</h2>
@@ -16,19 +16,19 @@ const Profile:React.FC=()=>{
                                 <ul className="flex flex-col text-left">
                                     <li className="mb-1">
                                         <a href="https://github.com/ayakakawabe" className="hover:text-gray-900">
-                                                <img src="/github_icon.svg" className="h-5 mr-1 inline"/>
+                                                <img src="./github_icon.svg" className="h-5 mr-1 inline"/>
                                                 <span>Github</span>
                                         </a>
                                     </li>
                                     <li className="mb-1">
                                         <a href="https://qiita.com/ayakaintheclouds" className="hover:text-gray-900">
-                                                <img src="/qiita_icon.png" className="h-5 mr-1 inline"/>
+                                                <img src="./qiita_icon.png" className="h-5 mr-1 inline"/>
                                                 <span>Qiita</span>
                                         </a>
                                     </li>
                                     <li className="mb-1">
                                         <a href="https://twitter.com/ak_intheclouds" className="hover:text-gray-900">
-                                                <img src="/x_icon.svg" className="h-4 w-5 mr-1 inline"/>
+                                                <img src="./x_icon.svg" className="h-4 w-5 mr-1 inline"/>
                                                 <span>X(Twitter)</span>
                                         </a>
                                     </li>

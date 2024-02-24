@@ -3,9 +3,9 @@ import React from "react";
 const Profile:React.FC=()=>{
     return(
         <section id="profile" className="text-gray-600 body-font">
-            <div className="container px-5 py-14 mx-auto flex flex-col">
+            <div className="container px-5 py-2 mx-auto flex flex-col">
                 <div className="lg:w-4/6 mx-auto">
-                    <div className="flex flex-col sm:flex-row mt-10">
+                    <div className="flex flex-col sm:flex-row my-2">
                         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                             <div className="w-20 h-20 rounded-full inline-flex items-center justify-center bg-gray-200 text-gray-400">
                                 <img src="/home_icon.svg" className=" w-20 h-20 rounded-full" />

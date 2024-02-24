@@ -106,37 +106,65 @@ const GithubRepo:React.FC=()=>{
     return(
         <section id="github">
             <div className="container px-5 py-10 mx-auto flex flex-col">
-            <div className="lg:w-4/6 mx-auto w-full flex flex-col items-center">
-            <h1 className="font-medium title-font text-gray-900 text-lg">Github</h1>
-            <div className="flex justify-center">
-                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-6"></div>
-            </div>
-            <div>
-                <img src={accountInfo?.avatarUrl}></img>
-                <p>name:{accountInfo?.name}</p>
-                <p>repos:{accountInfo?.repos}</p>
-                <p>followers:{accountInfo?.followers}</p> 
-                <p>following:{accountInfo?.following}</p>               
-            </div>
-            <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll"}}/>
-            <div>
-                {repos && 
-                repos.map((repo,index)=>{
-                    return (
-                        <div key={index}>
-                            <p>{repo.fullName}</p>
-                            <p>{repo.updatedDate}</p>
-                            <p>{repo.description}</p>
-                            <ul>
-                            {Object.keys(repo.languages).map((language,index)=>{return(
-                                    <li key={index}>{language}</li>
-                            )})}
-                            </ul>
+                <div className="lg:w-4/6 mx-auto w-full flex flex-col items-center">
+                    <h1 className="text-2xl font-medium title-font text-gray-900">Github</h1>
+                    <div className="flex justify-center">
+                        <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-8"></div>
+                    </div>
+                    <div className="w-full  md:w-3/4 pb-4">
+                        <div className="h-full flex md:flex-row flex-col items-center justify-evenly border-gray-200 border p-2 md:p-4 rounded-lg">
+                            <div className="flex items-center mx-4">
+                                <a href={"https://github.com/"+accountInfo?.name} className="hover:cursor-pointer">
+                                    <img src={accountInfo?.avatarUrl} className="w-12 h-12 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"></img>
+                                </a>
+                                <a href={"https://github.com/"+accountInfo?.name} className="hover:cursor-pointer">
+                                    <p className="my-auto font-medium text-gray-900">@{accountInfo?.name}</p>
+                                </a>
+                            </div>
+                            <div className="flex flex-wrap justify-around md:justify-between text-center">
+                                <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                                    <p className="font-medium text-xl text-gray-900">{accountInfo?.repos}</p>    
+                                    <p className="leading-relaxed">repos</p>
+                                </div>
+                                <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                                    <p className="font-medium text-xl text-gray-900">{accountInfo?.followers}</p>    
+                                    <p className="leading-relaxed">followers</p>
+                                </div>
+                                <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                                    <p className="font-medium text-xl text-gray-900">{accountInfo?.following}</p>    
+                                    <p className="leading-relaxed">following</p>
+                                </div>
+                            </div>
                         </div>
-                        )
-                })}
-            </div>
-            </div>
+                    </div>
+                    <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
+                    <div>
+                        <div className="flex items-center justify-center my-4">
+                            <h2 className="font-medium title-font text-gray-900 text-lg">Repositories</h2>
+                        </div>
+                        <div className="flex flex-wrap -m-4">
+                            {repos && 
+                            repos.map((repo,index)=>{
+                                return (
+                                    <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
+                                        <a href={repo.url} className="hover:cursor-pointer">
+                                            <div className="border border-gray-200 p-6 rounded-lg">
+                                                <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{repo.fullName}</h3>
+                                                <p>{repo.updatedDate}</p>
+                                                <p>{repo.description}</p>
+                                                <ul>
+                                                {Object.keys(repo.languages).map((language,index)=>{return(
+                                                        <li key={index}>{language}</li>
+                                                )})}
+                                                </ul>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    )
+                            })}
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
     )

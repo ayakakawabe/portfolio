@@ -67,7 +67,7 @@ const QiitaArt:React.FC=()=>{
             const sortedAllArticles=allArticles.sort((a,b)=>{
                 return (a.likes_count,b.likes_count)?1:-1;
             });
-            sortedAllArticles.slice(0,4).map((article):void=>{
+            sortedAllArticles.slice(0,6).map((article):void=>{
                 setArticles(articles=>[...articles,{likes:article.likes_count,stocks:article.stocks_count,tags:article.tags,title:article.title,updatedDate:article.updated_at.substring(0,article.updated_at.indexOf("T")),url:article.url,pv:article.page_views_count}]);
             });
         })();
@@ -76,33 +76,59 @@ const QiitaArt:React.FC=()=>{
         <section id="qiita">
             <div className="container px-5 py-10 mx-auto flex flex-col">
             <div className="lg:w-4/6 mx-auto flex  flex-col items-center">
-            <h1 className="font-medium title-font text-gray-900 text-lg">Qiita</h1>
+            <h1 className="text-2xl font-medium title-font text-gray-900">Qiita</h1>
             <div className="flex justify-center">
-                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-6"></div>
+                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-8"></div>
             </div>
-            <div>
-                <img src={accountInfo?.avatarUrl}></img>
-                <p>name:{accountInfo?.name}</p>
-                <p>articles:{accountInfo?.articles}</p>
-                <p>followers:{accountInfo?.followers}</p>
-                <p>following:{accountInfo?.following}</p>
+            <div className="w-full  md:w-3/4 pb-4">
+                <div className="h-full flex md:flex-row flex-col items-center justify-evenly border-gray-200 border p-2 md:p-4 rounded-lg">
+                    <div className="flex items-center mx-4">
+                        <a href={accountInfo?.url} className="hover:cursor-pointer">
+                            <img src={accountInfo?.avatarUrl} className="w-12 h-12 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"></img>
+                        </a>
+                        <a href={accountInfo?.url} className="hover:cursor-pointer">
+                            <p className="my-auto font-medium text-gray-900">@{accountInfo?.name}</p>
+                        </a>
+                    </div>
+                    <div className="flex flex-wrap justify-around md:justify-between text-center">
+                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                            <p className="font-medium text-xl text-gray-900">{accountInfo?.articles}</p>
+                            <p className="leading-relaxed">articles</p>
+                        </div>
+                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                            <p className="font-medium text-xl text-gray-900">{accountInfo?.followers}</p>
+                            <p className="leading-relaxed">followers</p>
+                        </div>
+                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                            <p className="font-medium text-xl text-gray-900">{accountInfo?.following}</p>
+                            <p className="leading-relaxed">following</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
+            <div className="flex items-center justify-center my-4">
+                <h2 className="font-medium title-font text-gray-900 text-lg">Articles</h2>
+            </div>
+            <div className="flex flex-wrap -m-4">
                 {articles.map((article,index)=>{
                     return (
-                        <div key={index}>
-                            <p>title:{article.title}</p>
-                            <p>updated:{article.updatedDate}</p>
-                            <ul>
-                                {article.tags.map((tag,index)=>{
-                                    return (
-                                        <li key={index}>{tag.name}</li>
-                                    )
-                                })}
-                            </ul>
-                            <p>likes:{article.likes}</p>
-                            <p>stocks:{article.stocks}</p>
-                            <p>pv:{article.pv}</p>
+                        <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
+                            <a href={article.url} className="hover:cursor-pointer">
+                                <div className="border border-gray-200 p-6 rounded-lg">
+                                    <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{article.title}</h3>
+                                    <p>updated:{article.updatedDate}</p>
+                                    <ul>
+                                        {article.tags.map((tag,index)=>{
+                                            return (
+                                                <li key={index}>{tag.name}</li>
+                                            )
+                                        })}
+                                    </ul>
+                                    <p>likes:{article.likes}</p>
+                                    <p>stocks:{article.stocks}</p>
+                                    <p>pv:{article.pv}</p>
+                                </div>
+                            </a>
                         </div>
                     )
                 })}

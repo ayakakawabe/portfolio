@@ -9,7 +9,7 @@ const Header:React.FC= ()=>{
                     <img src="/home_icon.svg" className="w-10 h-10 text-white p-0.5 bg-blue-400 rounded-full"></img>
                     <span className="ml-3 text-xl">ayaka</span>
                 </a>
-                <nav className="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center">
+                <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
                     <AnchorLink href="#profile" className="mr-5 hover:text-gray-900">Profile</AnchorLink>
                     <AnchorLink href="#activity" className="mr-5 hover:text-gray-900">Activities</AnchorLink>
                     <AnchorLink href="#github" className="mr-5 hover:text-gray-900">Github</AnchorLink>

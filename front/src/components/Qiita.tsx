@@ -67,7 +67,7 @@ const QiitaArt:React.FC=()=>{
             const sortedAllArticles=allArticles.sort((a,b)=>{
                 return (a.likes_count,b.likes_count)?1:-1;
             });
-            sortedAllArticles.slice(0,4).map((article):void=>{
+            sortedAllArticles.slice(0,6).map((article):void=>{
                 setArticles(articles=>[...articles,{likes:article.likes_count,stocks:article.stocks_count,tags:article.tags,title:article.title,updatedDate:article.updated_at.substring(0,article.updated_at.indexOf("T")),url:article.url,pv:article.page_views_count}]);
             });
         })();
@@ -106,22 +106,29 @@ const QiitaArt:React.FC=()=>{
                     </div>
                 </div>
             </div>
-            <div>
+            <div className="flex items-center justify-center my-4">
+                <h2 className="font-medium title-font text-gray-900 text-lg">Articles</h2>
+            </div>
+            <div className="flex flex-wrap -m-4">
                 {articles.map((article,index)=>{
                     return (
-                        <div key={index}>
-                            <p>title:{article.title}</p>
-                            <p>updated:{article.updatedDate}</p>
-                            <ul>
-                                {article.tags.map((tag,index)=>{
-                                    return (
-                                        <li key={index}>{tag.name}</li>
-                                    )
-                                })}
-                            </ul>
-                            <p>likes:{article.likes}</p>
-                            <p>stocks:{article.stocks}</p>
-                            <p>pv:{article.pv}</p>
+                        <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
+                            <a href={article.url} className="hover:cursor-pointer">
+                                <div className="border border-gray-200 p-6 rounded-lg">
+                                    <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{article.title}</h3>
+                                    <p>updated:{article.updatedDate}</p>
+                                    <ul>
+                                        {article.tags.map((tag,index)=>{
+                                            return (
+                                                <li key={index}>{tag.name}</li>
+                                            )
+                                        })}
+                                    </ul>
+                                    <p>likes:{article.likes}</p>
+                                    <p>stocks:{article.stocks}</p>
+                                    <p>pv:{article.pv}</p>
+                                </div>
+                            </a>
                         </div>
                     )
                 })}

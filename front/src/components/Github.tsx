@@ -107,18 +107,33 @@ const GithubRepo:React.FC=()=>{
         <section id="github">
             <div className="container px-5 py-10 mx-auto flex flex-col">
             <div className="lg:w-4/6 mx-auto w-full flex flex-col items-center">
-            <h1 className="font-medium title-font text-gray-900 text-lg">Github</h1>
+            <h1 className="text-2xl font-medium title-font text-gray-900">Github</h1>
             <div className="flex justify-center">
-                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-6"></div>
+                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-8"></div>
             </div>
-            <div>
-                <img src={accountInfo?.avatarUrl}></img>
-                <p>name:{accountInfo?.name}</p>
-                <p>repos:{accountInfo?.repos}</p>
-                <p>followers:{accountInfo?.followers}</p> 
-                <p>following:{accountInfo?.following}</p>               
+            <div className="w-full  md:w-3/4 pb-4">
+                <div className="h-full flex md:flex-row flex-col items-center justify-evenly border-gray-200 border p-2 md:p-4 rounded-lg">
+                    <div className="flex items-center mr-4">
+                        <img src={accountInfo?.avatarUrl} className="w-12 h-12 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"></img>
+                        <p className="my-auto font-medium">@{accountInfo?.name}</p>
+                    </div>
+                    <div className="flex flex-wrap justify-around md:justify-between text-center">
+                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                            <p className="font-medium text-xl text-gray-900">{accountInfo?.repos}</p>    
+                            <p className="leading-relaxed">repos</p>
+                        </div>
+                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                            <p className="font-medium text-xl text-gray-900">{accountInfo?.followers}</p>    
+                            <p className="leading-relaxed">followers</p>
+                        </div>
+                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
+                            <p className="font-medium text-xl text-gray-900">{accountInfo?.following}</p>    
+                            <p className="leading-relaxed">following</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll"}}/>
+            <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
             <div>
                 {repos && 
                 repos.map((repo,index)=>{

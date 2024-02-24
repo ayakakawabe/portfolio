@@ -76,9 +76,9 @@ const QiitaArt:React.FC=()=>{
         <section id="qiita">
             <div className="container px-5 py-10 mx-auto flex flex-col">
             <div className="lg:w-4/6 mx-auto flex  flex-col items-center">
-            <h1 className="font-medium title-font text-gray-900 text-lg">Qiita</h1>
+            <h1 className="text-2xl font-medium title-font text-gray-900">Qiita</h1>
             <div className="flex justify-center">
-                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-6"></div>
+                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-8"></div>
             </div>
             <div>
                 <img src={accountInfo?.avatarUrl}></img>

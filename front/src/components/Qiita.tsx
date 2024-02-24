@@ -73,7 +73,7 @@ const QiitaArt:React.FC=()=>{
         })();
     },[]);
     return(
-        <div>
+        <section id="qiita">
             <h1>Qiita</h1>
             <div>
                 <img src={accountInfo?.avatarUrl}></img>
@@ -102,7 +102,7 @@ const QiitaArt:React.FC=()=>{
                     )
                 })}
             </div>
-        </div>
+        </section >
     )
 };
 export default QiitaArt;

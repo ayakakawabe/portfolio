@@ -8,7 +8,7 @@ import Header from "./components/Header";
 
 function App() {
   return (
-    <>
+    <div className="text-gray-600 body-font">
       <Header />
       <Profile />
       <Skill />
@@ -16,7 +16,7 @@ function App() {
       <Activity />
       <GithubRepo />
       <QiitaArt />
-    </>
+    </div>
   )
 }
 

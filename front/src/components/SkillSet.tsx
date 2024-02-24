@@ -3,12 +3,19 @@ import React from "react";
 const SkillSet:React.FC=()=>{
     return(
         <section id="skillset">
-            <h1>Skill Set</h1>
-            <p>
-                <a href="https://skillicons.dev">
-                    <img src="https://skillicons.dev/icons?i=python,r,javascript,typescript,c,react,vue,fastapi,flask,docker&theme=light"/>
-                </a>
-            </p>
+            <div className="container px-5 py-8 mx-auto flex flex-col">
+                <div className="lg:w-4/6 mx-auto flex  flex-col items-center">
+                    <h1 className="font-medium title-font text-gray-900 text-lg">Skill Set</h1>
+                    <div className="flex justify-center">
+                        <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-6"></div>
+                    </div>
+                    <div>
+                        <a href="https://skillicons.dev">
+                            <img src="https://skillicons.dev/icons?i=python,r,javascript,typescript,c,react,vue,fastapi,flask,docker&theme=light&perline=8"/>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </section>
     )
 };

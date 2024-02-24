@@ -105,7 +105,12 @@ const GithubRepo:React.FC=()=>{
 
     return(
         <section id="github">
-            <h1>Github</h1>
+            <div className="container px-5 py-10 mx-auto flex flex-col">
+            <div className="lg:w-4/6 mx-auto w-full flex flex-col items-center">
+            <h1 className="font-medium title-font text-gray-900 text-lg">Github</h1>
+            <div className="flex justify-center">
+                <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-6"></div>
+            </div>
             <div>
                 <img src={accountInfo?.avatarUrl}></img>
                 <p>name:{accountInfo?.name}</p>
@@ -113,9 +118,7 @@ const GithubRepo:React.FC=()=>{
                 <p>followers:{accountInfo?.followers}</p> 
                 <p>following:{accountInfo?.following}</p>               
             </div>
-            <div>
-            <GitHubCalendar username={acconutName}/>
-            </div>
+            <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll"}}/>
             <div>
                 {repos && 
                 repos.map((repo,index)=>{
@@ -132,6 +135,8 @@ const GithubRepo:React.FC=()=>{
                         </div>
                         )
                 })}
+            </div>
+            </div>
             </div>
         </section>
     )

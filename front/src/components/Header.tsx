@@ -3,9 +3,9 @@ import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Header:React.FC= ()=>{
     return (
-        <header className="text-gray-600 body-font">
-            <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-                <a href="./" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
+        <header className="text-gray-600 body-font sticky top-0 bg-white">
+            <div className="container mx-auto flex flex-wrap p-2 md:p-5 flex-col md:flex-row items-center">
+                <a href="./" className="flex title-font font-medium items-center text-gray-900 mb-1 md:mb-0">
                     <img src="./home_icon.svg" className="w-12 h-12 text-white rounded-full"></img>
                     <span className="ml-3 text-xl">ayaka</span>
                 </a>

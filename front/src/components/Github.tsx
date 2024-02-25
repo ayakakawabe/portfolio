@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Octokit } from "@octokit/core";
 import { Endpoints } from "@octokit/types";
 import GitHubCalendar from "react-github-calendar";
+import GithubLanguageColors from "./../data/github_language/colors.json";
 
 interface AccountInfoType{
     name:string,
@@ -78,6 +79,21 @@ const getRepoLanguages=async(owner:string,repo:string):Promise<RepoLanguagesType
     return response;
 }
 
+interface GithubLanguageColorType{
+    color:string|null,
+    url:string
+}
+
+interface GithubLanguageColorsType{
+    [key:string]:GithubLanguageColorType
+}
+
+const searchGithubLanguageColor=(language:string):string=>{
+    const nullColor:string="#ededed";
+    const allGithubLanguageColors:GithubLanguageColorsType=GithubLanguageColors;
+    return allGithubLanguageColors[language].color ?? nullColor;
+}
+
 const GithubRepo:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<AccountInfoType>();    
     const [repos,setRepos]=useState<Array<RepoType>>([]);
@@ -148,15 +164,17 @@ const GithubRepo:React.FC=()=>{
                                 return (
                                     <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
                                         <a href={repo.url} className="hover:cursor-pointer">
-                                            <div className="border border-gray-200 p-6 rounded-lg">
-                                                <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{repo.fullName}</h3>
-                                                <p>{repo.updatedDate}</p>
-                                                <p>{repo.description}</p>
-                                                <ul>
+                                            <div className="border border-gray-200 p-6 rounded-lg h-full flex flex-col justify-between">
+                                                <div>
+                                                    <p>{repo.updatedDate}</p>
+                                                    <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{repo.fullName}</h3>
+                                                </div>
+                                                <p className="mb-2">{repo.description}</p>
+                                                <div className="flex flex-wrap">
                                                 {Object.keys(repo.languages).map((language,index)=>{return(
-                                                        <li key={index}>{language}</li>
+                                                        <span key={index} style={{color:searchGithubLanguageColor(language),borderColor:searchGithubLanguageColor(language)}} className="bg-transparent border border-gray-500 text-xs font-semibold px-2.5 py-0.5 rounded-full m-px">{language}</span>
                                                 )})}
-                                                </ul>
+                                                </div>
                                             </div>
                                         </a>
                                     </div>

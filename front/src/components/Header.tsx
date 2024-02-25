@@ -6,7 +6,7 @@ const Header:React.FC= ()=>{
         <header className="sticky top-0 bg-white shadow">
             <div className="container mx-auto flex flex-wrap p-2 md:p-5 flex-col md:flex-row items-center">
                 <a href="./" className="flex title-font font-medium items-center text-gray-800 mb-1 md:mb-0">
-                    <img src="./home_icon.svg" className="w-12 h-12 rounded-full border-2 border-purple-200"></img>
+                    <img src="./icon/home_icon.svg" className="w-12 h-12 rounded-full border-2 border-purple-200"></img>
                     <span className="ml-3 text-xl">Home</span>
                 </a>
                 <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">

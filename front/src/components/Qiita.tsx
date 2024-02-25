@@ -123,11 +123,11 @@ const QiitaArt:React.FC=()=>{
                                     <div className="flex flex-wrap">
                                         {article.tags.map((tag,index)=>{
                                             return (
-                                                <span key={index} className="bg-transparent text-gray-500 border border-gray-500 text-xs font-semibold px-2.5 py-0.5 rounded-full">{tag.name}</span>
+                                                <span key={index} className="bg-transparent text-gray-500 border border-gray-500 text-xs font-semibold px-2.5 py-0.5 rounded-full m-px">{tag.name}</span>
                                             )
                                         })}
                                     </div>
-                                    <div className="flex justify-start pt-2">
+                                    <div className="flex justify-end pt-2">
                                         <span className="inline-flex items-center leading-none text-sm px-2 py-1">
                                             <svg xmlns="http://www.w3.org/2000/svg" stroke="currentColor" className="w-4 h-4 mr-1" viewBox="0 0 512 512">
                                                 <path d="M448 256c0-106-86-192-192-192S64 150 64 256s86 192 192 192 192-86 192-192z" fill="none" stroke="currentColor" strokeMiterlimit="10" strokeWidth="32"/>

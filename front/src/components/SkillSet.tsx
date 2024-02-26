@@ -11,7 +11,7 @@ const SkillSet:React.FC=()=>{
                     </div>
                     <div>
                         <a href="https://skillicons.dev">
-                            <img src="https://skillicons.dev/icons?i=python,r,javascript,typescript,c,react,vue,fastapi,flask,docker&theme=light&perline=8"/>
+                            <img src="https://skillicons.dev/icons?i=python,r,javascript,typescript,c,react,vue,tailwind,fastapi,flask,docker&theme=light&perline=8"/>
                         </a>
                     </div>
                 </div>

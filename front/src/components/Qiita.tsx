@@ -114,7 +114,7 @@ const QiitaArt:React.FC=()=>{
                     return (
                         <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
                             <a href={article.url} className="hover:cursor-pointer">
-                                <div className="border border-gray-200 p-5 rounded-lg h-full flex flex-col justify-between">
+                                <div className="border border-gray-200 p-5 rounded-lg h-full flex flex-col justify-between shadow md:hadow-md">
                                     <div>
                                     <p>{article.updatedDate}</p>
                                     <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{article.title}</h3>
@@ -123,7 +123,7 @@ const QiitaArt:React.FC=()=>{
                                     <div className="flex flex-wrap">
                                         {article.tags.map((tag,index)=>{
                                             return (
-                                                <span key={index} className="bg-transparent text-gray-500 border border-gray-500 text-xs font-semibold px-2.5 py-0.5 rounded-full m-px">{tag.name}</span>
+                                                <span key={index} className="bg-gray-100 text-gray-900 text-xs px-2.5 py-0.5 rounded-full m-px">{tag.name}</span>
                                             )
                                         })}
                                     </div>

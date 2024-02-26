@@ -164,7 +164,7 @@ const GithubRepo:React.FC=()=>{
                                 return (
                                     <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
                                         <a href={repo.url} className="hover:cursor-pointer">
-                                            <div className="border border-gray-200 p-6 rounded-lg h-full flex flex-col justify-between">
+                                            <div className="border border-gray-200 p-6 rounded-lg h-full flex flex-col justify-between shadow md:hadow-md">
                                                 <div>
                                                     <p>{repo.updatedDate}</p>
                                                     <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{repo.fullName}</h3>

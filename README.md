@@ -16,7 +16,7 @@
     ```
 
 ## Usage 📚
-* Build at the first time
+* Build
 
     Run the following command after entering the container.
     ```

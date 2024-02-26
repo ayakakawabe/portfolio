@@ -1,7 +1,12 @@
-# portfolio
+# 👻 My Portfolio Site
+🔗 https://ayakakawabe.github.io/portfolio/
+
+The portfolio site contains my profile, skill set, certifications, activities, Github repositories, and Qiita articles.
+
+## 👾 Architecture Overview
 <div align="center" width="100%"><img src="https://github.com/ayakakawabe/portfolio/assets/103473179/e6096742-6253-4bb9-8127-ad75d5ead6d1" /></div>
 
-## Quick start 👻
+## 🚀 Quick start
 1. Start a container
     ```
     docker compose up -d
@@ -15,7 +20,7 @@
     npm install && npm run dev
     ```
 
-## Usage 📚
+## 📚 Usage
 * Build
 
     Run the following command after entering the container.

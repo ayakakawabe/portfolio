@@ -5,6 +5,7 @@ import Profile from "./components/Profile";
 import QiitaArt from "./components/Qiita";
 import Skill from "./components/SkillSet";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Activity />
       <GithubRepo />
       <QiitaArt />
+      <Footer />
     </div>
   )
 }

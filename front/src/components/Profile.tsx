@@ -8,7 +8,7 @@ const Profile:React.FC=()=>{
                     <div className="flex flex-col sm:flex-row my-2">
                         <div className="sm:w-1/3 text-center sm:pr-8 sm:py-8">
                             <div className="w-20 h-20 rounded-full inline-flex items-center justify-center">
-                                <img src="./icon/home_icon.svg" className=" w-20 h-20 rounded-full" />
+                                <img src="./icon/home_icon.svg" className=" w-20 h-20 rounded-full border-2 border-purple-200" />
                             </div>
                             <div className="flex flex-col items-center text-center justify-center">
                                 <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">Ayaka Kawabe</h2>
@@ -39,7 +39,7 @@ const Profile:React.FC=()=>{
                             <div>
                                 <p className="leading-relaxed text-lg my-2 before:content-['🌏'] before:mr-2">From Kyoto, Japan.</p>
                                 <p className="leading-relaxed text-lg my-2 before:content-['💻'] before:mr-2" >Studying Programming & Data Science at Doshisha University.</p>
-                                <p className="leading-relaxed text-lg my-2 before:content-['🎓'] before:mr-2">Conducting research on robot and avatar at a lab.</p>
+                                <p className="leading-relaxed text-lg my-2 before:content-['🎓'] before:mr-2">Conducting research on social robot and avatar at a lab.</p>
                                 <p className="leading-relaxed text-lg my-2 before:content-['📖'] before:mr-2">Currently learning Linux & English.</p>
                             </div>
                         </div>

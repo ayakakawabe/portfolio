@@ -10,10 +10,10 @@ const Header:React.FC= ()=>{
                     <span className="ml-3 text-xl">Home</span>
                 </a>
                 <nav className="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400 flex flex-wrap items-center text-base justify-center">
-                    <AnchorLink href="#profile" offset={()=>70} className="mx-2 hover:text-gray-900 bg-gray-100 border-0 px-3 focus:outline-none hover:bg-purple-100 rounded text-base mt-2 md:mt-0">Profile</AnchorLink>
-                    <AnchorLink href="#activity" offset={()=>100} className="mx-2 hover:text-gray-900 bg-gray-100 border-0 px-3 focus:outline-none hover:bg-purple-100 rounded text-base mt-2 md:mt-0">Activities</AnchorLink>
-                    <AnchorLink href="#github" offset={()=>100} className="mx-2 hover:text-gray-900 bg-gray-100 border-0 px-3 focus:outline-none hover:bg-purple-100 rounded text-base mt-2 md:mt-0">Github</AnchorLink>
-                    <AnchorLink href="#qiita" offset={()=>100} className="mx-2 hover:text-gray-900 bg-gray-100 border-0 px-3 focus:outline-none hover:bg-purple-100 rounded text-base mt-2 md:mt-0">Qiita</AnchorLink>
+                    <AnchorLink href="#profile" offset={()=>70} className="mx-2 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-2 md:mt-0">Profile</AnchorLink>
+                    <AnchorLink href="#activity" offset={()=>100} className="mx-2 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-2 md:mt-0">Activities</AnchorLink>
+                    <AnchorLink href="#github" offset={()=>100} className="mx-2 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-2 md:mt-0">Github</AnchorLink>
+                    <AnchorLink href="#qiita" offset={()=>100} className="mx-2 bg-gray-100 border-0 py-1 px-3 focus:outline-none hover:bg-gray-200 rounded text-base mt-2 md:mt-0">Qiita</AnchorLink>
                 </nav>
             </div>
         </header>

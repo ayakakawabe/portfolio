@@ -1,6 +1,18 @@
 import React from "react";
 
 const Activity:React.FC=()=>{
+    interface HackathonType{
+        year:number,
+        month:number,
+        title:string,
+        remarks:Array<string>
+    }
+    const hackathon:Array<HackathonType>=[
+        {year:2023,month:10,title:"技育CAMPマンスリーハッカソン vol.10",remarks:["企業賞","旅行場所の提案 & アバターと一緒に旅行ができるWebアプリケーション"]},
+        {year:2023,month:12,title:"Mercoin Hackathon 2023",remarks:["審査員特別賞","夢をかなえたい若者の『熱意』とその夢を応援したい人の『気持ち』を繋ぐ「ユメルカリ」"]},
+        {year:2023,month:12,title:"技育CAMPアドバンス",remarks:["技育CAMPマンスリーハッカソン（vol.10）の継続開発"]}
+    ]
+
     return(
         <section id="activity">
             <div className="container px-5 py-10 mx-auto flex flex-col">
@@ -21,38 +33,25 @@ const Activity:React.FC=()=>{
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-neutral-200">
-                        <tr className="ext-neutral-800">
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">10</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">技育CAMPマンスリーハッカソン vol.10</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">
-                                <ul className="list-disc">
-                                    <li>企業賞</li>
-                                    <li>旅行場所の提案 & アバターと一緒に旅行ができるWebアプリケーション</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr className="ext-neutral-800 bg-neutral-50">
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">12</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">Mercoin Hackathon 2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">
-                                <ul className="list-disc">
-                                    <li>審査員特別賞</li>
-                                    <li>夢をかなえたい若者の『熱意』とその夢を応援したい人の『気持ち』を繋ぐ「ユメルカリ」</li>
-                                </ul>
-                            </td>
-                        </tr>
-                        <tr className="ext-neutral-800">
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">12</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">技育CAMPアドバンス</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">
-                                <ul className="list-disc">
-                                    <li>技育CAMPマンスリーハッカソン（vol.10）の継続開発</li>
-                                </ul>
-                            </td>
-                        </tr>
+                        {hackathon.map((hackathonData,index)=>{
+                            const evenRowBgColor:string="bg-neutral-50";
+                            return (
+                                <tr key={index} className={index%2!=0?evenRowBgColor:undefined}>
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">{hackathonData.year}</td>
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">{hackathonData.month}</td>
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">{hackathonData.title}</td>
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">
+                                        <ul className="list-disc">
+                                            {hackathonData.remarks.map((remarksData,index)=>{
+                                                return (
+                                                    <li key={index}>{remarksData}</li>
+                                                )
+                                            })}
+                                        </ul>
+                                    </td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

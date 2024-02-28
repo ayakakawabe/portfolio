@@ -31,8 +31,9 @@ const Certification:React.FC=()=>{
                     </thead>
                     <tbody className="divide-y divide-neutral-200">
                         {certifications.map((certificationData,index)=>{
+                            const evenRowBgColor:string="bg-neutral-50";
                             return (
-                                <tr key={index} className="ext-neutral-800">
+                                <tr key={index} className={index%2!=0?evenRowBgColor:undefined}>
                                     <td className="px-5 py-4 text-sm whitespace-nowrap">{certificationData.year}</td>
                                     <td className="px-5 py-4 text-sm whitespace-nowrap">{certificationData.month}</td>
                                     <td className="px-5 py-4 text-sm whitespace-nowrap">{certificationData.name}</td>

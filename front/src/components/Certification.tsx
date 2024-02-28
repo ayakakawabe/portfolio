@@ -1,6 +1,17 @@
 import React from "react";
 
 const Certification:React.FC=()=>{
+    interface CertificationType{
+        year:number,
+        month:number,
+        name:string
+    }
+    const certifications:Array<CertificationType>=[
+        {year:2023,month:4,name:"ITパスポート"},
+        {year:2023,month:8,name:"基本情報技術者試験"},
+        {year:2023,month:12,name:"応用情報技術者試験"}
+    ]
+
     return(
         <section id="certification">
             <div className="container px-5 py-10 mx-auto flex flex-col">
@@ -19,21 +30,15 @@ const Certification:React.FC=()=>{
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-neutral-200">
-                        <tr className="ext-neutral-800">
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">4</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">ITパスポート</td>
-                        </tr>
-                        <tr className="ext-neutral-800 bg-neutral-50">
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">8</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">基本情報技術者試験</td>
-                        </tr>
-                        <tr className="ext-neutral-800">
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">2023</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">12</td>
-                            <td className="px-5 py-4 text-sm whitespace-nowrap">応用情報技術者試験</td>
-                        </tr>
+                        {certifications.map((certificationData,index)=>{
+                            return (
+                                <tr key={index} className="ext-neutral-800">
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">{certificationData.year}</td>
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">{certificationData.month}</td>
+                                    <td className="px-5 py-4 text-sm whitespace-nowrap">{certificationData.name}</td>
+                                </tr>
+                            )
+                        })}
                     </tbody>
                 </table>
             </div>

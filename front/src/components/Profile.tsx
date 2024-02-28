@@ -1,6 +1,11 @@
 import React from "react";
 
 const Profile:React.FC=()=>{
+    const name:string="Ayaka Kawabe";
+    const github_name:string="ayakakawabe";
+    const qiita_name:string="ayakaintheclouds";
+    const x_name:string="ak_intheclouds";
+
     return(
         <section id="profile">
             <div className="container px-5 py-10 mx-auto flex flex-col bg-white">
@@ -11,23 +16,23 @@ const Profile:React.FC=()=>{
                                 <img src="./icon/home_icon.svg" className=" w-20 h-20 rounded-full border-2 border-purple-200" />
                             </div>
                             <div className="flex flex-col items-center text-center justify-center">
-                                <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">Ayaka Kawabe</h2>
+                                <h2 className="font-medium title-font mt-4 text-gray-900 text-lg">{name}</h2>
                                 <div className="w-12 h-1 bg-purple-400 rounded mt-2 mb-6"></div>
                                 <ul className="flex w-4/5 justify-between sm:w-auto sm:flex-col sm:text-left">
                                     <li className="my-1">
-                                        <a href="https://github.com/ayakakawabe" className="flex  items-center hover:text-gray-900">
+                                        <a href={`https://github.com/${github_name}`} className="flex  items-center hover:text-gray-900">
                                                 <img src="./icon/github_icon.svg" className="h-5 mr-1 inline"/>
                                                 <span>Github</span>
                                         </a>
                                     </li>
                                     <li className="my-1">
-                                        <a href="https://qiita.com/ayakaintheclouds" className="flex  items-center hover:text-gray-900">
+                                        <a href={`https://qiita.com/${qiita_name}`} className="flex  items-center hover:text-gray-900">
                                                 <img src="./icon/qiita_icon.png" className="h-5 mr-1 inline"/>
                                                 <span>Qiita</span>
                                         </a>
                                     </li>
                                     <li className="my-1">
-                                        <a href="https://twitter.com/ak_intheclouds" className="flex  items-center hover:text-gray-900">
+                                        <a href={`https://twitter.com/${x_name}`} className="flex  items-center hover:text-gray-900">
                                                 <img src="./icon/x_icon.svg" className="h-4 w-5 mr-1 inline"/>
                                                 <span>X(Twitter)</span>
                                         </a>

@@ -1,6 +1,6 @@
 import Activity from "./components/Activity";
 import Certification from "./components/Certification";
-import GithubRepo from "./components/Github";
+import Github from "./components/Github";
 import Profile from "./components/Profile";
 import QiitaArt from "./components/Qiita";
 import Skill from "./components/SkillSet";
@@ -15,7 +15,7 @@ function App() {
       <Skill />
       <Certification />
       <Activity />
-      <GithubRepo />
+      <Github />
       <QiitaArt />
       <Footer />
     </div>

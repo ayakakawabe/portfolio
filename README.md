@@ -12,7 +12,7 @@ This site contains my profile, skill set, certifications, activities, Github rep
     ```
 2. Enter the container
     ```
-    docker container exec front sh
+    docker compose exec front sh
     ```
 3. Install package and start server
     ```

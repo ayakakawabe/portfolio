@@ -59,7 +59,7 @@ const Github:React.FC=()=>{
                     <div className="w-full md:w-3/4 pb-4">
                         <GithubPrfileCard accountInfo={accountInfo} />
                     </div>
-                    <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
+                        <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
                     <div>
                         <div className="flex items-center justify-center my-4">
                             <h2 className="font-medium title-font text-gray-900 text-lg">Repositories</h2>

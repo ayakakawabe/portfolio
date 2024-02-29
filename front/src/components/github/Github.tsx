@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import * as githubAPIs from "../../api/GithubAPIs";
 import GithubPrfileCard from "./GithubProfileCard";
 import GitHubCalendar from "react-github-calendar";
-import GithubLanguageColors from "../../data/github_language/colors.json";
+import GithubRepoCard from "./GithubRepoCard";
 
 interface AccountInfoType{
     name:string,
@@ -22,21 +22,6 @@ interface RepoType{
 
 const acconutName:string="ayakakawabe";
 const repoList:Array<string>=["TaRO","chatgpt-line-bot-for-experiment","portfolio"];
-
-interface GithubLanguageColorType{
-    color:string|null,
-    url:string
-}
-
-interface GithubLanguageColorsType{
-    [key:string]:GithubLanguageColorType
-}
-
-const searchGithubLanguageColor=(language:string):string=>{
-    const nullColor:string="#ededed";
-    const allGithubLanguageColors:GithubLanguageColorsType=GithubLanguageColors;
-    return allGithubLanguageColors[language].color ?? nullColor;
-}
 
 const Github:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<AccountInfoType>();    
@@ -84,20 +69,7 @@ const Github:React.FC=()=>{
                             repos.map((repo,index)=>{
                                 return (
                                     <div key={index} className="w-full xl:w-1/3 md:w-1/2 p-4">
-                                        <a href={repo.url} className="hover:cursor-pointer">
-                                            <div className="border border-gray-200 p-6 rounded-lg h-full flex flex-col justify-between shadow md:hadow-md">
-                                                <div>
-                                                    <p>{repo.updatedDate}</p>
-                                                    <h3 className="text-lg text-gray-900 font-medium title-font mb-2">{repo.fullName}</h3>
-                                                </div>
-                                                <p className="mb-2">{repo.description}</p>
-                                                <div className="flex flex-wrap">
-                                                {Object.keys(repo.languages).map((language,index)=>{return(
-                                                        <span key={index} style={{color:searchGithubLanguageColor(language),borderColor:searchGithubLanguageColor(language)}} className="bg-transparent border border-gray-500 text-xs font-semibold px-2.5 py-0.5 rounded-full m-px">{language}</span>
-                                                )})}
-                                                </div>
-                                            </div>
-                                        </a>
+                                        <GithubRepoCard repo={repo} />
                                     </div>
                                     )
                             })}

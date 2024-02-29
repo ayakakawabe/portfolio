@@ -21,7 +21,6 @@ This site contains my profile, skill set, certifications, activities, Github rep
 
 ## 📚 Usage
 * Build
-
     Run the following command after entering the container.
     ```
     npm run build
@@ -30,3 +29,9 @@ This site contains my profile, skill set, certifications, activities, Github rep
     ```
     docker compose down
     ```
+* Change portfolio data
+  
+  Change values of the following file.
+  ```
+  ./front/src/Controller.tsx
+  ``` 

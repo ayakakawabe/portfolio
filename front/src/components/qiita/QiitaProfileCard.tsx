@@ -1,6 +1,6 @@
 import React from "react"
 
-interface QiitaAccountInfoType{
+export interface qiitaProfileDataType{
     name:string,
     avatarUrl:string,
     articles:number,
@@ -9,7 +9,7 @@ interface QiitaAccountInfoType{
     url:string
 }
 
-const QiitaProfileCard:React.FC<{accountInfo:QiitaAccountInfoType|undefined}>=({accountInfo})=>{
+export const QiitaProfileCard:React.FC<{accountInfo:qiitaProfileDataType|undefined}>=({accountInfo})=>{
     return (
         <div className="h-full flex md:flex-row flex-col items-center justify-evenly border-gray-200 border p-2 md:p-4 rounded-lg">
             <div className="flex items-center mx-4">
@@ -37,4 +37,3 @@ const QiitaProfileCard:React.FC<{accountInfo:QiitaAccountInfoType|undefined}>=({
         </div>
     )
 }
-export default QiitaProfileCard;

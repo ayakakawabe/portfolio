@@ -1,6 +1,6 @@
 import React from "react"
 
-interface QiitaArticleType{
+export interface qiitaArticleType{
     likes:number,
     stocks:number,
     tags:any[],
@@ -10,7 +10,7 @@ interface QiitaArticleType{
     pv:number|null
 }
 
-const QiitaArticleCard:React.FC<{article:QiitaArticleType|undefined}>=({article})=>{
+export const QiitaArticleCard:React.FC<{article:qiitaArticleType|undefined}>=({article})=>{
     return (
         <a href={article?.url} className="hover:cursor-pointer">
             <div className="border border-gray-200 p-5 rounded-lg h-full flex flex-col justify-between shadow md:hadow-md">
@@ -55,5 +55,3 @@ const QiitaArticleCard:React.FC<{article:QiitaArticleType|undefined}>=({article}
         </a>
     )
 }
-
-export default QiitaArticleCard;

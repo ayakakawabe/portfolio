@@ -1,34 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { githubName,githubRepoList } from "../../Controller";
 import * as githubAPIs from "../../api/GithubAPIs";
-import GithubPrfileCard from "./GithubProfileCard";
+import {GithubPrfileCard,githubProfileDataType} from "./GithubProfileCard";
 import GitHubCalendar from "react-github-calendar";
-import GithubRepoCard from "./GithubRepoCard";
-
-interface AccountInfoType{
-    name:string,
-    avatarUrl:string,
-    repos:number,
-    following:number,
-    followers:number
-}
-
-interface RepoType{
-    fullName:string,
-    description:string|null,
-    languages:{[key: string]: number},
-    url:string,
-    updatedDate:string|null|undefined
-}
+import {GithubRepoCard,githubRepoDataType} from "./GithubRepoCard";
 
 const Github:React.FC=()=>{
-    const [accountInfo,setAccountInfo]=useState<AccountInfoType>();    
-    const [repos,setRepos]=useState<Array<RepoType>>([]);
+    const [githubProfileData,setGithubProfileData]=useState<githubProfileDataType>();    
+    const [repos,setRepos]=useState<Array<githubRepoDataType>>([]);
 
     useEffect(()=>{
         (async()=>{
             const allAccountInfo= await githubAPIs.getAccountInfo(githubName);
-            setAccountInfo({name:githubName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
+            setGithubProfileData({name:githubName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
         })();
 
         (async()=>{
@@ -55,7 +39,7 @@ const Github:React.FC=()=>{
                         <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-8"></div>
                     </div>
                     <div className="w-full md:w-3/4 pb-4">
-                        <GithubPrfileCard accountInfo={accountInfo} />
+                        <GithubPrfileCard githubProfileData={githubProfileData} />
                     </div>
                         <GitHubCalendar username={githubName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
                     <div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as QiitaAPIs from "../../api/QiitaAPIs";
+import QiitaProfileCard from "./QiitaProfileCard";
 
 interface QiitaAccountInfoType{
     name:string,
@@ -49,30 +50,7 @@ const Qiita:React.FC=()=>{
                 <div className="w-16 h-1 rounded-full bg-purple-400 inline-flex mt-1 mb-8"></div>
             </div>
             <div className="w-full  md:w-3/4 pb-4">
-                <div className="h-full flex md:flex-row flex-col items-center justify-evenly border-gray-200 border p-2 md:p-4 rounded-lg">
-                    <div className="flex items-center mx-4">
-                        <a href={accountInfo?.url} className="hover:cursor-pointer">
-                            <img src={accountInfo?.avatarUrl} className="w-12 h-12 bg-gray-100 object-cover object-center flex-shrink-0 rounded-full mr-4"></img>
-                        </a>
-                        <a href={accountInfo?.url} className="hover:cursor-pointer">
-                            <p className="my-auto font-medium text-gray-900">@{accountInfo?.name}</p>
-                        </a>
-                    </div>
-                    <div className="flex flex-wrap justify-around md:justify-between text-center">
-                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
-                            <p className="font-medium text-xl text-gray-900">{accountInfo?.articles}</p>
-                            <p className="leading-relaxed">articles</p>
-                        </div>
-                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
-                            <p className="font-medium text-xl text-gray-900">{accountInfo?.followers}</p>
-                            <p className="leading-relaxed">followers</p>
-                        </div>
-                        <div className="pt-2 px-4 md:p-4 w-1/4 flex flex-col items-center">
-                            <p className="font-medium text-xl text-gray-900">{accountInfo?.following}</p>
-                            <p className="leading-relaxed">following</p>
-                        </div>
-                    </div>
-                </div>
+                <QiitaProfileCard accountInfo={accountInfo} />
             </div>
             <div className="flex items-center justify-center my-4">
                 <h2 className="font-medium title-font text-gray-900 text-lg">Articles</h2>

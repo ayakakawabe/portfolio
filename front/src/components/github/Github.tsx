@@ -20,7 +20,7 @@ interface RepoType{
     updatedDate:string|null|undefined
 }
 
-const acconutName:string="ayakakawabe";
+const accountName:string="ayakakawabe";
 const repoList:Array<string>=["TaRO","chatgpt-line-bot-for-experiment","portfolio"];
 
 const Github:React.FC=()=>{
@@ -29,12 +29,12 @@ const Github:React.FC=()=>{
 
     useEffect(()=>{
         (async()=>{
-            const allAccountInfo= await githubAPIs.getAccountInfo(acconutName);
-            setAccountInfo({name:acconutName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
+            const allAccountInfo= await githubAPIs.getAccountInfo(accountName);
+            setAccountInfo({name:accountName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
         })();
 
         (async()=>{
-            const allRepos=await githubAPIs.getAllRepos(acconutName);
+            const allRepos=await githubAPIs.getAllRepos(accountName);
             allRepos.data.map((repo):void=>{
                 if(repoList.includes(repo.name)){
                     const owner=repo.owner.login;
@@ -59,7 +59,7 @@ const Github:React.FC=()=>{
                     <div className="w-full md:w-3/4 pb-4">
                         <GithubPrfileCard accountInfo={accountInfo} />
                     </div>
-                        <GitHubCalendar username={acconutName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
+                        <GitHubCalendar username={accountName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
                     <div>
                         <div className="flex items-center justify-center my-4">
                             <h2 className="font-medium title-font text-gray-900 text-lg">Repositories</h2>

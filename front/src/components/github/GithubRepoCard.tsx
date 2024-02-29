@@ -1,7 +1,7 @@
 import React from "react"
 import GithubLanguageColors from "../../data/github_language/colors.json";
 
-interface RepoType{
+export interface githubRepoDataType{
     fullName:string,
     description:string|null,
     languages:{[key: string]: number},
@@ -24,7 +24,7 @@ const searchGithubLanguageColor=(language:string):string=>{
     return allGithubLanguageColors[language].color ?? nullColor;
 }
 
-const GithubRepoCard:React.FC<{repo:RepoType}>=({repo})=>{
+export const GithubRepoCard:React.FC<{repo:githubRepoDataType}>=({repo})=>{
     return (
         <a href={repo.url} className="hover:cursor-pointer">
             <div className="border border-gray-200 p-6 rounded-lg h-full flex flex-col justify-between shadow md:hadow-md">
@@ -43,4 +43,3 @@ const GithubRepoCard:React.FC<{repo:RepoType}>=({repo})=>{
     )
 }
 
-export default GithubRepoCard;

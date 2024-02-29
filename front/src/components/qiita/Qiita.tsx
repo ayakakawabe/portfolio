@@ -1,34 +1,16 @@
 import React, { useEffect, useState } from "react";
+import { qiitaName } from "../../Controller";
 import * as QiitaAPIs from "../../api/QiitaAPIs";
-import QiitaProfileCard from "./QiitaProfileCard";
-import QiitaArticleCard from "./QiitaArticleCard";
-
-interface QiitaAccountInfoType{
-    name:string,
-    avatarUrl:string,
-    articles:number,
-    following:number,
-    followers:number,
-    url:string
-}
-
-interface QiitaArticleType{
-    likes:number,
-    stocks:number,
-    tags:any[],
-    title:string,
-    updatedDate:string,
-    url:string,
-    pv:number|null
-}
+import {QiitaProfileCard,qiitaProfileDataType} from "./QiitaProfileCard";
+import {QiitaArticleCard,qiitaArticleType} from "./QiitaArticleCard";
 
 const Qiita:React.FC=()=>{
-    const [accountInfo,setAccountInfo]=useState<QiitaAccountInfoType>();
-    const [articles,setArticles]=useState<Array<QiitaArticleType>>([]);
+    const [accountInfo,setAccountInfo]=useState<qiitaProfileDataType>();
+    const [articles,setArticles]=useState<Array<qiitaArticleType>>([]);
 
     useEffect(()=>{
         (async()=>{
-            const allAccountInfo= await QiitaAPIs.getAccountInfo();
+            const allAccountInfo= await QiitaAPIs.getAccountInfo(qiitaName);
             setAccountInfo({name:allAccountInfo.id,avatarUrl:allAccountInfo.profile_image_url,articles:allAccountInfo.items_count,followers:allAccountInfo.followers_count,following:allAccountInfo.followees_count,url:"https://qiita.com/"+allAccountInfo.id});
         })();
 

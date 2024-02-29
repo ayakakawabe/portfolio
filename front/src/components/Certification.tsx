@@ -1,17 +1,7 @@
 import React from "react";
+import { certificationsData } from "../Controller";
 
 const Certification:React.FC=()=>{
-    interface CertificationType{
-        year:number,
-        month:number,
-        name:string
-    }
-    const certifications:Array<CertificationType>=[
-        {year:2023,month:4,name:"ITパスポート"},
-        {year:2023,month:8,name:"基本情報技術者試験"},
-        {year:2023,month:12,name:"応用情報技術者試験"}
-    ]
-
     return(
         <section id="certification">
             <div className="container px-5 py-10 mx-auto flex flex-col">
@@ -30,7 +20,7 @@ const Certification:React.FC=()=>{
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-neutral-200">
-                        {certifications.map((certificationData,index)=>{
+                        {certificationsData.map((certificationData,index)=>{
                             const evenRowBgColor:string="bg-neutral-50";
                             return (
                                 <tr key={index} className={index%2!=0?evenRowBgColor:undefined}>

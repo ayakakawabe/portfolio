@@ -2,8 +2,8 @@ import type { Qiita as QiitaType } from "../types/qiita";
 
 const QIITA_AUTH:string=import.meta.env.VITE_QIITA_AUTH;
 
-export const getAccountInfo=async():Promise<QiitaType.Entities.AuthenticatedUser>=>{
-    const response= await fetch("https://qiita.com/api/v2/users/ayakaintheclouds",{
+export const getAccountInfo=async(accountName:string):Promise<QiitaType.Entities.AuthenticatedUser>=>{
+    const response= await fetch(`https://qiita.com/api/v2/users/${accountName}`,{
         method:"GET",
         headers:{
             "Content-Type":"application/json",

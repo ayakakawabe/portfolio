@@ -1,4 +1,4 @@
-import Activity from "./components/Activity";
+import Activities from "./components/Activity";
 import Certification from "./components/Certification";
 import Github from "./components/github/Github";
 import Profile from "./components/Profile";
@@ -14,7 +14,7 @@ function App() {
       <Profile />
       <Skill />
       <Certification />
-      <Activity />
+      <Activities />
       <Github />
       <Qiita />
       <Footer />

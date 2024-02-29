@@ -22,13 +22,15 @@ interface QiitaArticleType{
     pv:number|null
 }
 
+const qiita_name:string="ayakaintheclouds"
+
 const Qiita:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<QiitaAccountInfoType>();
     const [articles,setArticles]=useState<Array<QiitaArticleType>>([]);
 
     useEffect(()=>{
         (async()=>{
-            const allAccountInfo= await QiitaAPIs.getAccountInfo();
+            const allAccountInfo= await QiitaAPIs.getAccountInfo(qiita_name);
             setAccountInfo({name:allAccountInfo.id,avatarUrl:allAccountInfo.profile_image_url,articles:allAccountInfo.items_count,followers:allAccountInfo.followers_count,following:allAccountInfo.followees_count,url:"https://qiita.com/"+allAccountInfo.id});
         })();
 

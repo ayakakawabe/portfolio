@@ -1,6 +1,6 @@
 import Activity from "./components/Activity";
 import Certification from "./components/Certification";
-import Github from "./components/Github";
+import Github from "./components/github/Github";
 import Profile from "./components/Profile";
 import QiitaArt from "./components/Qiita";
 import Skill from "./components/SkillSet";

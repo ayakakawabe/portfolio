@@ -1,18 +1,7 @@
 import React from "react";
+import { hackathonsData } from "../Controller";
 
-const Activity:React.FC=()=>{
-    interface HackathonType{
-        year:number,
-        month:number,
-        title:string,
-        remarks:Array<string>
-    }
-    const hackathon:Array<HackathonType>=[
-        {year:2023,month:10,title:"技育CAMPマンスリーハッカソン vol.10",remarks:["企業賞","旅行場所の提案 & アバターと一緒に旅行ができるWebアプリケーション"]},
-        {year:2023,month:12,title:"Mercoin Hackathon 2023",remarks:["審査員特別賞","夢をかなえたい若者の『熱意』とその夢を応援したい人の『気持ち』を繋ぐ「ユメルカリ」"]},
-        {year:2023,month:12,title:"技育CAMPアドバンス",remarks:["技育CAMPマンスリーハッカソン（vol.10）の継続開発"]}
-    ]
-
+const Activities:React.FC=()=>{
     return(
         <section id="activity">
             <div className="container px-5 py-10 mx-auto flex flex-col">
@@ -33,7 +22,7 @@ const Activity:React.FC=()=>{
                         </tr>
                     </thead>
                     <tbody className="divide-y divide-neutral-200">
-                        {hackathon.map((hackathonData,index)=>{
+                        {hackathonsData.map((hackathonData,index)=>{
                             const evenRowBgColor:string="bg-neutral-50";
                             return (
                                 <tr key={index} className={index%2!=0?evenRowBgColor:undefined}>
@@ -60,4 +49,4 @@ const Activity:React.FC=()=>{
         </section>
     )
 };
-export default Activity;
+export default Activities;

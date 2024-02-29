@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { githubName,githubRepoList } from "../../Controller";
 import * as githubAPIs from "../../api/GithubAPIs";
 import GithubPrfileCard from "./GithubProfileCard";
 import GitHubCalendar from "react-github-calendar";
@@ -20,23 +21,20 @@ interface RepoType{
     updatedDate:string|null|undefined
 }
 
-const accountName:string="ayakakawabe";
-const repoList:Array<string>=["TaRO","chatgpt-line-bot-for-experiment","portfolio"];
-
 const Github:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<AccountInfoType>();    
     const [repos,setRepos]=useState<Array<RepoType>>([]);
 
     useEffect(()=>{
         (async()=>{
-            const allAccountInfo= await githubAPIs.getAccountInfo(accountName);
-            setAccountInfo({name:accountName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
+            const allAccountInfo= await githubAPIs.getAccountInfo(githubName);
+            setAccountInfo({name:githubName,avatarUrl:allAccountInfo.data.avatar_url,repos:allAccountInfo.data.public_repos,following:allAccountInfo.data.following,followers:allAccountInfo.data.followers});
         })();
 
         (async()=>{
-            const allRepos=await githubAPIs.getAllRepos(accountName);
+            const allRepos=await githubAPIs.getAllRepos(githubName);
             allRepos.data.map((repo):void=>{
-                if(repoList.includes(repo.name)){
+                if(githubRepoList.includes(repo.name)){
                     const owner=repo.owner.login;
                     const repoName=repo.name;
                     (async()=>{
@@ -59,7 +57,7 @@ const Github:React.FC=()=>{
                     <div className="w-full md:w-3/4 pb-4">
                         <GithubPrfileCard accountInfo={accountInfo} />
                     </div>
-                        <GitHubCalendar username={accountName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
+                        <GitHubCalendar username={githubName} fontSize={16} throwOnError style={{width:"100%",overflow:"scroll", marginTop:"10px",marginBottom:"10px"}}/>
                     <div>
                         <div className="flex items-center justify-center my-4">
                             <h2 className="font-medium title-font text-gray-900 text-lg">Repositories</h2>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import type { Qiita as QiitaType } from "./../types/qiita";
+import * as QiitaAPIs from "../../api/QiitaAPIs";
 
 interface QiitaAccountInfoType{
     name:string,
@@ -20,50 +20,18 @@ interface QiitaArticlesType{
     pv:number|null
 }
 
-const QIITA_AUTH:string=import.meta.env.VITE_QIITA_AUTH;
-
-const getAccountInfo=async():Promise<QiitaType.Entities.AuthenticatedUser>=>{
-    const response= await fetch("https://qiita.com/api/v2/users/ayakaintheclouds",{
-        method:"GET",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":"Bearer "+QIITA_AUTH
-        }
-    })
-    if(!response.ok){
-        throw new Error(`HTTP error (get account infomation). Status:${response.status}`);
-    }
-    const data=response.json();
-    return data;
-}
-
-const getAllArticles=async():Promise<Array<QiitaType.Entities.Item>>=>{
-    const response= await fetch("https://qiita.com/api/v2/authenticated_user/items?page=1&per_page=100",{
-        method:"GET",
-        headers:{
-            "Content-Type":"application/json",
-            "Authorization":"Bearer "+QIITA_AUTH
-        }
-    })
-    if(!response.ok){
-        throw new Error(`HTTP error (get articles). Status:${response.status}`);
-    }
-    const data=response.json();
-    return data;
-};
-
-const QiitaArt:React.FC=()=>{
+const Qiita:React.FC=()=>{
     const [accountInfo,setAccountInfo]=useState<QiitaAccountInfoType>();
     const [articles,setArticles]=useState<Array<QiitaArticlesType>>([]);
 
     useEffect(()=>{
         (async()=>{
-            const allAccountInfo= await getAccountInfo();
+            const allAccountInfo= await QiitaAPIs.getAccountInfo();
             setAccountInfo({name:allAccountInfo.id,avatarUrl:allAccountInfo.profile_image_url,articles:allAccountInfo.items_count,followers:allAccountInfo.followers_count,following:allAccountInfo.followees_count,url:"https://qiita.com/"+allAccountInfo.id});
         })();
 
         (async()=>{
-            const allArticles=await getAllArticles();
+            const allArticles=await QiitaAPIs.getAllArticles();
             const sortedAllArticles=allArticles.sort((a,b)=>{
                 return (a.likes_count,b.likes_count)?1:-1;
             });
@@ -163,4 +131,4 @@ const QiitaArt:React.FC=()=>{
         </section >
     )
 };
-export default QiitaArt;
+export default Qiita;

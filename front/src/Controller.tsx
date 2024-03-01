@@ -4,7 +4,7 @@ export const titleName:titleName="Ayaka Kawabe";
 
 // Skill icon controller
 export type normalSkilliconURL=string;
-export const normalSkilliconURL:normalSkilliconURL="https://skillicons.dev/icons?i=python,r,javascript,typescript,c,react,vue,tailwind,fastapi,flask,docker";
+export const normalSkilliconURL:normalSkilliconURL="https://skillicons.dev/icons?i=python,r,javascript,typescript,c,react,vue,tailwind,fastapi,flask,selenium,docker,postgres,github,githubactions";
 
 // Certifications controller
 interface CertificationType{

@@ -12,7 +12,7 @@ const SkillSet:React.FC=()=>{
                     </div>
                     <div>
                         <a href="https://skillicons.dev">
-                            <img src={`${normalSkilliconURL}&theme=light&perline=8`}/>
+                            <img src={`${normalSkilliconURL}&theme=dark&perline=8`}/>
                         </a>
                     </div>
                 </div>

@@ -1,5 +1,5 @@
 <div align="center">
-    <h1>👻 My Portfolio Site</h1>  
+    <h1>My Portfolio Site</h1>  
     <p align="center">
       <a href="https://skillicons.dev">
         <img src="https://skillicons.dev/icons?i=typescript,tailwind,docker,vite,githubactions" />

@@ -31,14 +31,15 @@ export type hackathonsData=Array<HackathonType>
 export const hackathonsData:hackathonsData=[
     {year:2023,month:10,title:"技育CAMPマンスリーハッカソン vol.10",remarks:["企業賞","旅行場所の提案 & アバターと一緒に旅行ができるWebアプリケーション"]},
     {year:2023,month:12,title:"Mercoin Hackathon 2023",remarks:["審査員特別賞","夢をかなえたい若者の『熱意』とその夢を応援したい人の『気持ち』を繋ぐ「ユメルカリ」"]},
-    {year:2023,month:12,title:"技育CAMPアドバンス",remarks:["技育CAMPマンスリーハッカソン（vol.10）の継続開発"]}
+    {year:2023,month:12,title:"技育CAMPアドバンス",remarks:["技育CAMPマンスリーハッカソン（vol.10）の継続開発"]},
+    {year:2024,month:3,title:"Dots to Code",remarks:["言語のギャップを解消する絵文字だけのチャット「emocha」"]}
 ]
 
 // Github controller
 export type githubName=string;
 export const githubName:githubName="ayakakawabe";
 export type githubRepoList=Array<string>;
-export const githubRepoList:githubRepoList=["TaRO","chatgpt-line-bot-for-experiment","portfolio"];
+export const githubRepoList:githubRepoList=["TaRO","chatgpt-line-bot-for-experiment","portfolio","emocha"];
 
 // Qiita controller
 export type qiitaName=string;
